@@ -1,5 +1,5 @@
 services:
-  app:
+  mecipi-app:
     build:
       context: ./docker/app
       dockerfile: Dockerfile
@@ -10,9 +10,9 @@ services:
     ports:
       - "9000:9000"
     depends_on:
-      - db
+      - mecipi-db
 
-  web:
+  mecipi-web:
     image: nginx:alpine
     container_name: mecipi-web
     ports:
@@ -21,9 +21,9 @@ services:
       - ./src:/home/web/mecipi/laravel
       - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - app
+      - mecipi-app
 
-  db:
+  mecipi-db:
     build:
       context: ./docker/db
       dockerfile: Dockerfile
