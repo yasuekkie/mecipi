@@ -19,8 +19,8 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id()->comment('レシピID');
             $table->string('recipe_name')->comment('レシピ名');
-            $table->string('url')->comment('URL');
-            $table->string('memo')->comment('メモ');
+            $table->string('url')->nullable(true)->comment('URL');
+            $table->string('memo')->nullable(true)->comment('メモ');
             $table->timestamp('created_at')->comment('登録日時');
             $table->timestamp('updated_at')->comment('更新日時');
 
